@@ -16,8 +16,3 @@ def fetch():
     return "fetch"
 
 
-# @app.route("/env")
-# def env():
-#     import os
-#     env = os.popen('env | grep -v -E GAE')
-#     return str(env.read())

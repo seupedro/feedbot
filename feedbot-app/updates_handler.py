@@ -6,7 +6,7 @@ from updates_dispatcher import dispatch_bulk_photo_message, dispatch_bulk_messag
 
 def process_updates(title, link, photo_html):
 
-    users: list = get_usr_list()
+    users: list = list(get_usr_list())
     photo = get_article_photo(photo_html)
 
     if users is not None:
@@ -45,5 +45,4 @@ def get_article_photo(photo_html):
         photo = BeautifulSoup(photo_html, 'html.parser') \
             .contents[0].attrs['src'].replace('_univ_sqs_sm.jpg', '_univ_lsr_lg.jpg')
         print('photo', photo)
-
-    return photo_html
+        return photo

@@ -13,9 +13,6 @@ FEEDBOT_SERVICE_URL = os.getenv('FEEDBOT_SERVICE_URL')
 
 
 def fetch_updates():
-    if True:
-        httpx.post(url='https://bedf8726b2caa32f4625cd085c88673a.m.pipedream.net',
-                   json={'cron': 'runned','biquini': 'de bolinha amarelinha'})
 
     redis_db()
 
@@ -34,6 +31,7 @@ def fetch_updates():
 def start_new_request(last_modified):
 
     print('starting a new request...')
+    feed: FeedParserDict = feedparser.parse(FEED_URL, modified=last_modified)
 
     if feed.status == 200:
         print(feed.status)
@@ -48,7 +46,7 @@ def start_new_request(last_modified):
             # Prevent duplicated messages be sent.
             is_not_duplicated_item = set_feed_id(entry.id, date_secs) == DB_ONE_ITEM_ADDED
             if is_not_duplicated_item:
-                entries_to_send.append({'title': entry.title, 'link': entry.link, 'summary': entry.summary})
+                entries_to_send.append({'title': entry.title, 'link': entry.link, 'photo_html': entry.summary})
 
         print(len(entries_to_send), 'new entries to send')
         has_news_to_send: bool = len(entries_to_send) > 0

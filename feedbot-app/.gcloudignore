@@ -13,6 +13,7 @@
 .git
 .gitignore
 feedbot-py-cac12d6c5e59.json
+.idea/
 
 # Python virtual env
 venv/

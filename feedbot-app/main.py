@@ -1,4 +1,5 @@
 import os
+from typing import List
 
 import httpx as httpx
 import telegram
@@ -42,12 +43,14 @@ def webhook_handler():
 def updates():
 
     if request.method == "POST":
-        json: dict = request.get_json(force=True)
-        process_updates(
-            title=json.get('title'),
-            link=json.get('link'),
-            photo_html=json.get('photo_html')
-        )
+        json: List[dict] = request.get_json(force=True)
+
+        for article in json:
+            process_updates(
+                title=article.get('title'),
+                link=article.get('link'),
+                photo_html=article.get('photo_html')
+            )
 
     return 'ok'
 

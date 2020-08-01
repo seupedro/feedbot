@@ -18,7 +18,7 @@ HELP_TEXT = '😥 Desculpe {} \n' \
             'Credits: Icons made by Roundicons from www.flaticon.com is licensed by CC 3.0'
 
 
-def start(update):
+def start(bot, update):
     usr: User = update.effective_user
     chat: Chat = update.effective_chat
     msg: Message = update.effective_message
