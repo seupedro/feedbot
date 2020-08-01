@@ -1,0 +1,12 @@
+# Python
+__pycache__
+venv/lib/
+
+# Intellij
+.idea/
+
+# Env vars
+env.yaml
+
+# Etc
+.DS_Store

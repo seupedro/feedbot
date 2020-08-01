@@ -1,0 +1,13 @@
+cron:
+- description: "Fetch news from JW.org at 12:00"
+  url: /fetch
+  schedule: every day 12:00
+  timezone: America/Sao_Paulo
+  target: feedparser
+
+- description: "Fetch news from JW.org at 18:00"
+  url: /fetch
+  schedule: every day 18:00
+  timezone: America/Sao_Paulo
+  target: feedparser
+
