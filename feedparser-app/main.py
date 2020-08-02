@@ -12,7 +12,7 @@ def ping():
 
 @app.route("/fetch")
 def fetch():
-    fetch_updates()
-    return "fetch"
+    feed_status: int = fetch_updates()
+    return '/fetch', feed_status
 
 

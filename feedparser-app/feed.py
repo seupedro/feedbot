@@ -51,19 +51,21 @@ def start_new_request(last_modified):
         print(len(entries_to_send), 'new entries to send')
         has_news_to_send: bool = len(entries_to_send) > 0
         if has_news_to_send:
-            httpx.post(f'{FEEDBOT_SERVICE_URL}/{TOKEN}/updates', json=entries_to_send)
+            with httpx.Client() as client:
+                r: httpx.Response = client.post(f'{FEEDBOT_SERVICE_URL}/{TOKEN}/updates', json=entries_to_send)
 
         entries_to_send.clear()
+        return feed.status
 
     elif feed.status == 304:
         print(feed.status, 'Not modified')
         limit_feed_id_size()
-        pass
+        return feed.status
 
     else:
         # TODO: Handle any Response Code here
         print(feed.status, 'unhandled error')
-        pass
+        return feed.status
 
 
 def initialize_feed():
