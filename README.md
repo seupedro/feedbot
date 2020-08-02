@@ -1,5 +1,5 @@
 ![microservice arquitecture](arquitecture.png)
 
-## Feedsender
+## Feedbot
 
-A microservice to send messages to telegram. It's part of Feedbot-app.
+A microservice to send messages to telegram. 
