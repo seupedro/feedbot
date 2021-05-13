@@ -21,7 +21,7 @@ itsdangerous==1.1.0
 Jinja2==2.11.2
 MarkupSafe==1.1.1
 pycparser==2.20
-pydantic==1.6.1
+pydantic==1.6.2
 python-telegram-bot==12.8
 redis==3.5.3
 rfc3986==1.4.0
